@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 
 public class ArcherAnimations : MonoBehaviour
-{
+{ 
     private SkeletonAnimation skeletonAnimation;
     private bool isShoot;
 
@@ -33,11 +33,12 @@ public class ArcherAnimations : MonoBehaviour
     {
         if (!isShoot)
         {
+            int fireRate = 1000;
             isShoot = true;
             skeletonAnimation.AnimationState.SetAnimation(0, "attack_finish", false);
             skeletonAnimation.AnimationState.AddAnimation(0, "attack_start", false, 0f);     
 
-            await Task.Delay(1000);
+            await Task.Delay(fireRate);
             isShoot = false;
         }
     }
