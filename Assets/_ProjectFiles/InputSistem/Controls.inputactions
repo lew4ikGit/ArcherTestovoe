@@ -1,0 +1,34 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "af287ee4-efc2-4af7-932b-b1b993de87f3",
+            "actions": [
+                {
+                    "name": "shot",
+                    "type": "Button",
+                    "id": "de71d5fe-4933-4f7b-b533-3b1c5767cc35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fb84f411-1c00-4ec2-a8d7-8fe5dcd434ab",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "shot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
