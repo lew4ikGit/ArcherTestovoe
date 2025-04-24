@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Spine;
 using Spine.Unity;
+using System.Collections;
+using System.Threading.Tasks;
+using UnityEngine;
 using Zenject;
 
 public class ArcherAnimations : MonoBehaviour
@@ -30,29 +29,21 @@ public class ArcherAnimations : MonoBehaviour
         skeletonAnimation = GetComponent<SkeletonAnimation>();
     }
 
-    private void ShotAnim()
+    private async void ShotAnim()
     {
         if (!isShoot)
         {
             isShoot = true;
             skeletonAnimation.AnimationState.SetAnimation(0, "attack_finish", false);
-            skeletonAnimation.AnimationState.AddAnimation(0, "attack_start", false, 0f);
-            skeletonAnimation.AnimationState.AddAnimation(0, "attack_target", false, 0f);
+            skeletonAnimation.AnimationState.AddAnimation(0, "attack_start", false, 0f);     
+
+            await Task.Delay(1000);
+            isShoot = false;
         }
-
-        StartCoroutine("ReloadCor");
     }
-
-
-    IEnumerator ReloadCor()
-    {
-        yield return new WaitWhile(()=>skeletonAnimation.state.GetCurrent(0).Animation.Name != "attack_target");  
-
-        isShoot = false;
-    }
-
+ 
     public bool GetIsShot()
     {
         return isShoot;
-    }
+    } 
 }

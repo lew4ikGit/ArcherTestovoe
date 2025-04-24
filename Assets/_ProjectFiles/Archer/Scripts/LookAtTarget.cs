@@ -7,18 +7,11 @@ public class LookAtTarget : MonoBehaviour
 {
 
     [SerializeField] private SkeletonAnimation skeletonAnimation;
-
-    //[SpineBone(dataField: "skeletonAnimation")]
-    //[SerializeField] private string boneName;
     [SerializeField] private Camera cam;
-
-    [SerializeField] Transform arrowPoint;
     private Bone arrowBone;
     private Bone gunBone;
 
     [Inject] private InputController inputController;
-
-    [SpineSlot] [SerializeField] string slot;
 
     void OnValidate()
     {
@@ -29,7 +22,7 @@ public class LookAtTarget : MonoBehaviour
     {
         inputController.OnAim += Aim;
         gunBone = skeletonAnimation.Skeleton.FindBone("gun");
-        arrowBone = skeletonAnimation.Skeleton.FindBone("bullet");  
+        arrowBone = skeletonAnimation.Skeleton.FindBone("bullet");
     }
     private void OnDisable()
     {
@@ -46,11 +39,6 @@ public class LookAtTarget : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         gunBone.Rotation = angle;
-
-        //arrowPoint.position = skeletonAnimation.transform.TransformPoint(new Vector2(arrowBone.WorldX, arrowBone.WorldY));
-        //arrowPoint.rotation = Quaternion.Euler(0, 0, arrowBone.WorldRotationX);
-
-       
     }
 
 }
